@@ -1,0 +1,364 @@
+# =============================================================================
+# .gitignore - API REST Imobiliária (Spring Boot + Maven + Flyway + MySQL)
+# Java 25 | VS Code | Repositório público no GitHub
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# 1. SEGREDOS E CREDENCIAIS  (prioridade máxima em repositório público)
+# -----------------------------------------------------------------------------
+# Arquivos de variáveis de ambiente
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.env
+
+# Configurações locais do Spring (senha do banco, tokens, etc.)
+# Dica: coloque credenciais reais em application-local.properties e deixe
+# em application.properties apenas valores seguros / variáveis ${...}
+application-local.properties
+application-local.yml
+application-local.yaml
+application-dev.properties
+application-dev.yml
+application-dev.yaml
+application-secret*.properties
+application-secret*.yml
+application-secrets.*
+application-prod.properties
+application-prod.yml
+application-prod.yaml
+secrets/
+secret/
+*.secret
+*.secrets
+
+# Chaves, certificados e keystores
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+*.crt
+*.cer
+*.der
+*.csr
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.gpg
+*.asc
+
+# Credenciais de provedores de nuvem / ferramentas
+.aws/
+.azure/
+.gcloud/
+gcloud-service-key.json
+service-account*.json
+credentials.json
+credentials.*.json
+.npmrc
+.pypirc
+.netrc
+settings-security.xml
+
+# Arquivos de cliente HTTP com tokens/ambientes privados (VS Code REST Client / IntelliJ HTTP Client)
+http-client.private.env.json
+http-client.env.json
+rest-client.env.json
+
+
+# -----------------------------------------------------------------------------
+# 2. MAVEN - artefatos de build
+# -----------------------------------------------------------------------------
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+.mvn/.gradle-enterprise/
+.mvn/.develocity/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.bak
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.flattened-pom.xml
+
+
+# -----------------------------------------------------------------------------
+# 3. GRADLE (caso o projeto migre ou alguém gere com Gradle)
+# -----------------------------------------------------------------------------
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+
+# -----------------------------------------------------------------------------
+# 4. JAVA - compilados, empacotados e dumps da JVM
+# -----------------------------------------------------------------------------
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+*.hprof
+*.jfr
+*.log
+*.log.*
+logs/
+log/
+*.pid
+*.pid.lock
+*.seed
+
+
+# -----------------------------------------------------------------------------
+# 5. BANCO DE DADOS LOCAL (dumps, backups e arquivos de dados)
+# -----------------------------------------------------------------------------
+# Atenção: as migrations do Flyway (src/main/resources/db/migration/*.sql)
+# DEVEM ser versionadas. Por isso só ignoramos dumps/backups fora dela.
+*.dump
+*.bak
+*.backup
+*.sqlite
+*.sqlite3
+*.db
+*.mv.db
+*.trace.db
+*.h2.db
+*.ibd
+*.frm
+*.MYD
+*.MYI
+*.ldf
+*.mdf
+backup*.sql
+dump*.sql
+*_backup.sql
+*_dump.sql
+*-backup.sql
+*-dump.sql
+mysql-mysql_data/
+db-data/
+data/
+
+
+# -----------------------------------------------------------------------------
+# 6. IDEs E EDITORES
+# -----------------------------------------------------------------------------
+### VS Code (ambiente usado neste projeto) ###
+.vscode/*
+!.vscode/extensions.json
+.history/
+*.code-workspace
+.factorypath
+
+### Eclipse / Spring Tool Suite ###
+.apt_generated
+.apt_generated_tests
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+.metadata/
+tmp/
+*.tmp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.idea_modules/
+atlassian-ide-plugin.xml
+cmake-build-*/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### Vim / Emacs / outros ###
+*.swp
+*.swo
+\#*\#
+.#*
+.vim/
+.netrwhist
+
+
+# -----------------------------------------------------------------------------
+# 7. FERRAMENTAS DE IA / EXTENSÕES (geram arquivos locais de sessão)
+# -----------------------------------------------------------------------------
+# GitHub Copilot "app modernization" (gerou .github/modernize/java-upgrade/hooks)
+.github/modernize/
+.github/copilot-instructions.local.md
+.copilot/
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.continue/
+.codeium/
+.windsurf/
+.tabnine/
+.sourcegraph/
+
+
+# -----------------------------------------------------------------------------
+# 8. ARQUIVOS DE SISTEMA OPERACIONAL
+# -----------------------------------------------------------------------------
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.stackdump
+[Dd]esktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.VolumeIcon.icns
+.DocumentRevisions-V100
+.TemporaryItems
+
+# Linux / editores (arquivos de backup terminados em ~)
+*~
+.directory
+.fuse_hidden*
+.nfs*
+.Trash-*
+
+
+# -----------------------------------------------------------------------------
+# 9. DOCUMENTAÇÃO GERADA / ARQUIVOS AUXILIARES DO INITIALIZR
+# -----------------------------------------------------------------------------
+HELP.md
+*.orig
+*.rej
+
+
+# -----------------------------------------------------------------------------
+# 10. TESTES, COBERTURA E RELATÓRIOS
+# -----------------------------------------------------------------------------
+coverage/
+jacoco*.exec
+jacoco/
+.jacoco/
+surefire-failsafe-reports/
+test-output/
+.scannerwork/
+.sonar/
+sonar-project.properties.local
+*.lcov
+.nyc_output/
+reports/
+
+
+# -----------------------------------------------------------------------------
+# 11. DOCKER / CONTAINERS (ajustes locais)
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+docker-compose.override.yaml
+docker-compose.local.yml
+docker-compose.local.yaml
+.dockerignore.local
+.devcontainer/*.local*
+
+
+# -----------------------------------------------------------------------------
+# 12. NODE / FRONTEND (caso a API ganhe um front-end no mesmo repositório)
+# -----------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.next/
+.nuxt/
+.angular/
+.cache/
+.parcel-cache/
+.eslintcache
+
+
+# -----------------------------------------------------------------------------
+# 13. PYTHON (scripts auxiliares, geração de dados, etc.)
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+.ipynb_checkpoints/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+
+# -----------------------------------------------------------------------------
+# 14. UPLOADS E ARQUIVOS DE USUÁRIO GERADOS EM EXECUÇÃO
+# -----------------------------------------------------------------------------
+uploads/
+upload/
+
+
+# -----------------------------------------------------------------------------
+# 15. ARQUIVOS PESSOAIS / ACADÊMICOS QUE NÃO DEVEM IR PARA O PÚBLICO
+# -----------------------------------------------------------------------------
+# Enunciados, entregas e materiais com dados pessoais (nome, matrícula, etc.)
+*.docx
+*.doc
+*.xlsx
+*.xls
+*.pptx
+*.ppt
+*.pdf
+!docs/**/*.pdf
+anotacoes*.txt
+notas*.txt
+rascunho*
+TODO.local.md
+notes.local.md
+*.local
+*.local.md
+*.private
+*.private.md

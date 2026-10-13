@@ -1,0 +1,128 @@
+### Criar cliente
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "Maria Souza",
+  "cpf": "12345678901",
+  "telefone": "98999998888",
+  "email": "maria@email.com",
+  "dataNascimento": "1995-04-10"
+}
+
+### Criar imóvel
+POST http://localhost:8080/imoveis
+Content-Type: application/json
+
+{
+  "tipoImovel": "Apartamento",
+  "endereco": "Rua das Flores, 100 - São Luís/MA",
+  "cep": "65000-000",
+  "dormitorios": 2,
+  "banheiros": 1,
+  "suites": 1,
+  "metragem": 70,
+  "valorAluguelSugerido": 1500.00,
+  "obs": "Próximo ao centro"
+}
+
+### Criar locação
+POST http://localhost:8080/locacoes
+Content-Type: application/json
+
+{
+  "idImovel": 1,
+  "idInquilino": 1,
+  "dataInicio": "2026-10-01",
+  "diaVencimento": 10,
+  "percMulta": 2.0,
+  "valorAluguel": 1400.00
+}
+
+### Buscar clientes
+GET http://localhost:8080/clientes
+
+### Buscar ID
+GET http://localhost:8080/clientes/1
+
+### Buscar locações
+GET http://localhost:8080/locacoes
+
+### Atualizar
+PUT http://localhost:8080/clientes/1
+Content-Type: application/json
+
+{ "nome": "Maria S. Lima", "cpf": "12345678901", "email": "maria@email.com", "dataNascimento": "1995-04-10" }
+
+### Excluir
+DELETE http://localhost:8080/clientes/1
+
+### Testes de exception
+
+### 1. POST cliente com "nome": "" e CPF "123"
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "",
+  "cpf": "123"
+}
+
+###
+
+### 2. POST cliente com CPF repetido
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "cpf": "12345678901"
+}
+
+###
+
+### 3. GET /clientes/999
+GET http://localhost:8080/clientes/999
+
+###
+
+### 4. POST locação com idImovel inexistente
+POST http://localhost:8080/locacoes
+Content-Type: application/json
+
+{
+  "idCliente": 1,
+  "idImovel": 9999,
+  "dataInicio": "2026-11-01",
+  "dataFim": "2026-11-30"
+}
+
+###
+
+### 5. POST locação com dataFim antes de dataInicio
+POST http://localhost:8080/locacoes
+Content-Type: application/json
+
+{
+  "idCliente": 1,
+  "idImovel": 1,
+  "dataInicio": "2026-11-30",
+  "dataFim": "2026-11-01"
+}
+
+###
+
+### 6. DELETE de cliente que tem locação 
+DELETE http://localhost:8080/clientes/1
+
+###
+
+### 7. POST com JSON quebrado ou data inválida
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "Maria",
+  "cpf": "12345678901",
+  "dataNascimento": "10/04/1995"
+}
